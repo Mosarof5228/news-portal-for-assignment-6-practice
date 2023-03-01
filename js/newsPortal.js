@@ -8,10 +8,10 @@ const displayCategory = (categories) => {
     // console.log(categories)
     const categoriesContainer = document.getElementById("category-container");
     categories.forEach((category) => {
-        // console.log(category)
+        // console.log(category.category_name)
         const categoryP = document.createElement("p");
         categoryP.innerHTML = `
-        <a  onclick="loadNewsByClick('${category.category_id}')" class="text-decoration-none pe-auto" href="#">${category.category_name}</a>
+        <a  onclick="loadNewsByClick('${category.category_id}', '${category.category_name}')" class="text-decoration-none pe-auto" href="#">${category.category_name}</a>
         `
         categoriesContainer.appendChild(categoryP)
     })
@@ -20,14 +20,15 @@ const displayCategory = (categories) => {
 
 //click and specific category load
 
-const loadNewsByClick = (id) => {
+const loadNewsByClick = (id, name) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
     fetch(url)
         .then(response => response.json())
-        .then(data => displayNewsByClick(data.data))
+        .then(data => displayNewsByClick(data.data, name))
+
 }
 
-const displayNewsByClick = (newsObj) => {
+const displayNewsByClick = (newsObj, name) => {
     const newsContainer = document.getElementById("news-container");
     // news not found message
     const newsNotFoundMessage = document.getElementById("news-not-found-message");
@@ -37,9 +38,14 @@ const displayNewsByClick = (newsObj) => {
     else {
         newsNotFoundMessage.classList.add("d-none")
     }
+    // alert stat here
+    const itemsCount = document.getElementById("items-count");
+    const itemsName = document.getElementById("items-name")
+    itemsCount.innerText = newsObj.length
+    itemsName.innerText = name;
     newsContainer.innerHTML = '';
     newsObj.forEach((singleNews) => {
-        console.log(singleNews)
+        // console.log(singleNews)
         const newsDiv = document.createElement("div");
         newsDiv.classList.add("card");
         newsDiv.classList.add("mb-3")
