@@ -53,6 +53,27 @@
                 <span id="items-count">0</span> items found for category <span id="items-name">Entertainment</span>
             </div>
         </section>
+
+        <!-- trending section start-->
+        <section class="container">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex gap-4 align-items-center">
+                    <div class="fw-bold">Sort By View:</div>
+                    <div>
+                        <select onchange="ascendingAndDescending()" class="form-select"
+                            aria-label="Default select example">
+                            <option selected>Default</option>
+                            <option id="ascending" value="1">Ascending</option>
+                            <option id="descending" value="2">Descending</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary">Primary</button>
+                    <button type="button" class="btn btn-outline-primary">Primary</button>
+                </div>
+            </div>
+        </section>
         <!-- news container -->
         <section class="container mt-3">
             <div id="news-container">

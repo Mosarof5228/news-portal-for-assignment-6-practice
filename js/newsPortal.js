@@ -89,4 +89,8 @@ const displayNewsByClick = (newsObj, name) => {
     })
 }
 
+const ascendingAndDescending = () => {
+
+}
+
 loadAllCategory()
